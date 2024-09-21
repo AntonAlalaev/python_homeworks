@@ -12,3 +12,6 @@ print_params(values_list)  # Передает только первый пара
 values_dict = {'a': 45, 'b': "Что-то", 'c': False}
 print_params(**values_dict) # Распаковывает словарь и передает каждый параметр
 print_params(values_dict) # Не распаковываеь и передает словарь в качетсве первого аргумента
+
+values_list2 = [5,5]
+print_params(*values_list2,42)
