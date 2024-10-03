@@ -40,7 +40,7 @@ class UrTube:
         user = User(nikname, password, age)
         if user in self.users:
             print(f"Пользователь {user.nikname} уже существует")
-            self.current_user = user
+            # self.current_user = user
         else:
             self.users.append(user)
             self.current_user = user
