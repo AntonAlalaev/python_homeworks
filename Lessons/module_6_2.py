@@ -36,6 +36,7 @@ class Vehicle:
 
 class Sedan(Vehicle):
     __PASSENGERS_LIMIT = 5
+
     def __init__(self, owner, model, color, engine_power):
         super().__init__(owner, model, engine_power, color)
 
