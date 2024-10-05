@@ -43,7 +43,7 @@ class Shop:
         # Загружает данные из файла
         with open(self.__file_name, 'r') as file_product:
             raw_data = file_product.readlines()
-            file_product.close()
+            file_product.close() # можно и не закрывать
         return Product.create_list(raw_data)
 
     def get_product(self):
@@ -58,7 +58,7 @@ class Shop:
         with open(self.__file_name, 'w') as file_product:
             for item in self.__product_list:
                 file_product.writelines(str(item) + "\n")
-            file_product.close()
+            file_product.close() # можно и не закрывать
 
     def __init__(self):
         # Сначала попытаемся прочитать файл с продуктами,

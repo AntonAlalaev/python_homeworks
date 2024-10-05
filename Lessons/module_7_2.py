@@ -12,7 +12,7 @@ def custom_write(file_name, strings):
             file.write(string + "\n")
             # запись в словарь
             str_positions[(index, position)] = string
-        file.close()
+        file.close() # можно и не закрывать
     return str_positions
 
 
