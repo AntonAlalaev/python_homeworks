@@ -4,16 +4,18 @@ team2_num = 6 # Количество участников во второй ко
 team1_name = "Мастера кода" # название первой команды
 team2_name = "Волшебники данных" # название второй команды
 
-# Использование %s
-print("В команде %s участников: %s" % (team1_name, team1_num))
-print("В команде %(name)s участников: %(num)s" % {"name": team2_name, "num": team2_num})
-print("Итого сегодня в командах участников: %s и %s" % (team1_num, team2_num))
-
 team1_score = 40
 team2_score = 42
 
 team1_time = 18015.2
 team2_time = 19020.2
+
+# Использование %s
+print("В команде %s участников: %s" % (team1_name, team1_num))
+print("В команде %(name)s участников: %(num)s" % {"name": team2_name, "num": team2_num})
+print("Итого сегодня в командах участников: %s и %s" % (team1_num, team2_num))
+
+
 
 # Использование format
 print("Команда {} решила задач: {}".format(team1_name, team1_score))
