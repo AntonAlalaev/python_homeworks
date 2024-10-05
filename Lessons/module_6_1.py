@@ -35,8 +35,6 @@ class Mammal(Animal):
     Наследуемый класс млекопитающего
     """
 
-    def __init__(self, name):
-        super().__init__(name)
 
 
 class Predator(Animal):
@@ -44,8 +42,7 @@ class Predator(Animal):
     Наследуемый класс хищника
     """
 
-    def __init__(self, name):
-        super().__init__(name)
+
 
 
 class Flower(Plant):
@@ -53,8 +50,6 @@ class Flower(Plant):
     Наследуемый класс цветка, по умолчанию несъедобный
     """
 
-    def __init__(self, name):
-        super().__init__(name)
 
 
 class Fruit(Plant):
@@ -63,8 +58,6 @@ class Fruit(Plant):
     """
     edible = True
 
-    def __init__(self, name):
-        super().__init__(name)
 
 
 a1 = Predator('Волк с Уолл-Стрит')
