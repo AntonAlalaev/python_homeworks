@@ -2,11 +2,11 @@ class Animal:
     """
     Базовый класс животного
     """
+    alive = True
+    fed = False
 
     def __init__(self, name):
         self.name = name
-        self.alive = True
-        self.fed = False
 
     def __str__(self):
         return self.name
@@ -24,10 +24,10 @@ class Plant:
     """
     Базовый класс растения
     """
+    edible = False
 
     def __init__(self, name):
         self.name = name
-        self.edible = False
 
 
 class Mammal(Animal):
@@ -61,10 +61,10 @@ class Fruit(Plant):
     """
     Наследуемый класс фрукта, по умолчанию съедобный
     """
+    edible = True
 
     def __init__(self, name):
         super().__init__(name)
-        self.edible = True
 
 
 a1 = Predator('Волк с Уолл-Стрит')
