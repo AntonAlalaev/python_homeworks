@@ -11,6 +11,14 @@ class Animal:
     def __str__(self):
         return self.name
 
+    def eat(self, food):
+        if isinstance(food, Plant) and food.edible:
+            print(f"{self.name} съел {food.name}")
+            self.fed = True
+        elif isinstance(food, Plant):
+            print(f"{self.name} не стал есть {food.name}")
+            self.alive = False
+
 
 class Plant:
     """
@@ -30,14 +38,6 @@ class Mammal(Animal):
     def __init__(self, name):
         super().__init__(name)
 
-    def eat(self, food):
-        if isinstance(food, Plant) and food.edible:
-            print(f"{self.name} съел {food.name}")
-            self.fed = True
-        elif isinstance(food, Plant):
-            print(f"{self.name} не стал есть {food.name}")
-            self.alive = False
-
 
 class Predator(Animal):
     """
@@ -46,18 +46,6 @@ class Predator(Animal):
 
     def __init__(self, name):
         super().__init__(name)
-
-    def eat(self, food):
-        if isinstance(food, Plant) and food.edible:
-            print(f"{self.name} съел {food.name}")
-            self.fed = True
-        elif isinstance(food, Plant):
-            print(f"{self.name} не стал есть {food.name}")
-            self.alive = False
-        # Решил добавить от себя, т.к. хищник может есть животных
-        if isinstance(food, Animal):
-            print(f"{self.name} съел {food.name}")
-            self.fed = True
 
 
 class Flower(Plant):
