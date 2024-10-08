@@ -1,7 +1,5 @@
 from random import choice
 
-from pygments.lexer import words
-
 first = 'Мама мыла раму'
 second = 'Рамена мало было'
 
