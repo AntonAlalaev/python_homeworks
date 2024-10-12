@@ -1,5 +1,5 @@
 from threading import Thread, Lock
-from random import random, randint
+from random import randint
 from time import sleep
 
 class Bank(Thread):
