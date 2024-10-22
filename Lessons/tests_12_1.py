@@ -21,3 +21,6 @@ class RunnerTest(unittest.TestCase):
             test_obj_1.walk()
             test_obj_2.run()
         self.assertNotEqual(test_obj_1.distance, test_obj_2.distance)
+
+if __name__ == "__main__":
+    unittest.main()
