@@ -1,0 +1,17 @@
+2024-10-23 23:56:54,551 | INFO |  test_challenge прошел успешно 
+2024-10-23 23:56:54,551 | WARNING | Задана отрицательная скорость
+Traceback (most recent call last):
+  File "/home/anton/PycharmProjects/python_homeworks/Lessons/tests_12_4.py", line 29, in test_run
+    test_obj = runner.Runner("Вася", -5)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anton/PycharmProjects/python_homeworks/Lessons/rt_with_exceptions.py", line 11, in __init__
+    raise ValueError(f'Скорость не может быть отрицательной, сейчас {speed}')
+ValueError: Скорость не может быть отрицательной, сейчас -5
+2024-10-23 23:56:54,552 | WARNING | Имя должно быть строкой
+Traceback (most recent call last):
+  File "/home/anton/PycharmProjects/python_homeworks/Lessons/tests_12_4.py", line 16, in test_walk
+    test_obj = runner.Runner(2)
+               ^^^^^^^^^^^^^^^^
+  File "/home/anton/PycharmProjects/python_homeworks/Lessons/rt_with_exceptions.py", line 6, in __init__
+    raise TypeError(f'Имя может быть только строкой, передано {type(name).__name__}')
+TypeError: Имя может быть только строкой, передано int
