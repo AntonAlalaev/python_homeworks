@@ -42,19 +42,25 @@ inline_kb = InlineKeyboardMarkup(
 
 
 @dp.callback_query_handler(text="product_buying")
-async def get_buying_list(call):
+async def send_confirm_message(call):
     await call.message.answer("Куплено!")
 
 
-product_dict = {"Private Jet": "image1.jpeg", "Yacht": "image2.jpg", "Private Island": "image3.jpg",
-                "Private Castle": "image4.jpg"}
+product_pic = {"Private Jet": "image1.jpeg", "Yacht": "image2.jpg", "Private Island": "image3.jpg",
+               "Private Castle": "image4.jpg"}
+
+product_data = {"Private Jet": ["Самолет", "На нем можно летать куда угодно", "100 000 000 $"],
+                "Yacht": ["Яхта", "На ней можно уплыть куда угодно", "20 000 000 $"],
+                "Private Island": ["Остров", "На нем можно жить сколько угодно", "150 000 000 $"],
+                "Private Castle": ["Замок", "В нем можно жить как угодно", "70 000 000 $"]}
 
 
 @dp.message_handler(text="Купить")
-async def buy(message):
-    for key in product_dict:
-        await message.answer(f"Продукт: {key}")
-        await message.answer_photo(photo=open(f"pictures/{product_dict[key]}", 'rb'))
+async def get_buying_list(message):
+    for key in product_pic:
+        await message.answer_photo(photo=open(f"pictures/{product_pic[key]}", 'rb'))
+        await message.answer(
+            f"Продукт: {product_data[key][0]} | Описание: {product_data[key][1]} | Цена: {product_data[key][2]} $")
     await message.answer("Выберите продукт для покупки", reply_markup=inline_kb)
 
 
