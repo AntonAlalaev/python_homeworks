@@ -5,8 +5,15 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
+from crud_functions import get_all_products
 
-# import asyncio
+# загрузка данных из БД
+product_data = get_all_products()
+
+# присвоение имен файлам рисунков
+product_pic = []
+for index in product_data:
+    product_pic.append(f"image{index[0]}.jpg")
 
 
 class UserState(StatesGroup):
@@ -15,7 +22,7 @@ class UserState(StatesGroup):
     weight = State()
 
 
-api = "xxx"
+api = "x"
 bot = Bot(token=api)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
@@ -46,21 +53,12 @@ async def send_confirm_message(call):
     await call.message.answer("Куплено!")
 
 
-product_pic = {"Private Jet": "image1.jpg", "Yacht": "image2.jpg", "Private Island": "image3.jpg",
-               "Private Castle": "image4.jpg"}
-
-product_data = {"Private Jet": ["Самолет", "На нем можно летать куда угодно", "100 000 000 $"],
-                "Yacht": ["Яхта", "На ней можно уплыть куда угодно", "20 000 000 $"],
-                "Private Island": ["Остров", "На нем можно жить сколько угодно", "150 000 000 $"],
-                "Private Castle": ["Замок", "В нем можно жить как угодно", "70 000 000 $"]}
-
-
 @dp.message_handler(text="Купить")
 async def get_buying_list(message):
-    for key in product_pic:
-        await message.answer_photo(photo=open(f"pictures/{product_pic[key]}", 'rb'))
+    for item in product_data:
+        await message.answer_photo(photo=open(f"pictures/{product_pic[item[0] - 1]}", 'rb'))
         await message.answer(
-            f"Продукт: {product_data[key][0]} | Описание: {product_data[key][1]} | Цена: {product_data[key][2]} $")
+            f"Продукт: {item[1]} | Описание: {item[2]} | Цена: {item[3]}$")
     await message.answer("Выберите продукт для покупки", reply_markup=inline_kb)
 
 
