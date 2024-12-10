@@ -1,6 +1,5 @@
 from typing import Annotated
-
-from fastapi import FastAPI, Path
+from fastapi import FastAPI, Path, Query
 
 app = FastAPI()
 
@@ -24,12 +23,13 @@ async def get_user(
 
 
 @app.get("/user")
-async def get_user_info(username: Annotated[str, Path(min_length=5,
+async def get_user_info(username: Annotated[str, Query(min_length=5,
                                                       max_length=20,
                                                       title="Enter User Name",
                                                       description="The name must be between 5 and 20 characters long",
                                                       pattern="^[a-zA-Z0-9_-]")],
-                         age: Annotated[int, Path(gt=18, le=120,
+                         age: Annotated[int, Query(gt=18, le=120,
                                               title="Enter Age",
                                               description="The age must be integer greater than 18 and lower than 120")]):
     return f"Информация о пользователе. Имя: {username}, возраст: {age}"
+
