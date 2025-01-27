@@ -18,18 +18,20 @@ async def get_admin() -> str:
 async def get_user(
         user_id: Annotated[int, Path(gt=1, le=100,
                                      title="Enter User ID",
-                                     description="The ID must be integer greater than 0 and lower than 100")]):
+                                     description="The ID must be integer greater than 0 and lower than 100",
+                                     example=1)]):
     return f"Вы вошли как пользователь # {user_id}"
 
 
-@app.get("/user")
-async def get_user_info(username: Annotated[str, Query(min_length=5,
+@app.get("/user/{username}/{age}")
+async def get_user_info(username: Annotated[str, Path(min_length=5,
                                                       max_length=20,
                                                       title="Enter User Name",
                                                       description="The name must be between 5 and 20 characters long",
-                                                      pattern="^[a-zA-Z0-9_-]")],
-                         age: Annotated[int, Query(gt=18, le=120,
+                                                      pattern="^[a-zA-Z0-9_-]",
+                                                      example="UrbanUser")],
+                         age: Annotated[int, Path(gt=18, le=120,
                                               title="Enter Age",
-                                              description="The age must be integer greater than 18 and lower than 120")]):
+                                              description="The age must be integer greater than 18 and lower than 120",
+                                              example=24)]):
     return f"Информация о пользователе. Имя: {username}, возраст: {age}"
-
